@@ -1,13 +1,11 @@
-import { CategoryService } from "../../services/CategoryService";
-import useSWR from "swr";
 import { category } from "../../types";
 import Card from "../_coreComponent/card";
-
-const fetcher = () => CategoryService.getAll();
+import { useSelector } from "react-redux";
 
 const Categories = () => {
-  const { data, error, isLoading } = useSWR("categories", fetcher);
-  if (isLoading) {
+  const { data, error } = useSelector((state: any) => state.categories);
+
+  if (!data) {
     return <div>Loading...</div>;
   }
   if (error) {

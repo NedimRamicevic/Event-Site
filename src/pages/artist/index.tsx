@@ -1,16 +1,16 @@
 import { useState } from "react";
 import Card from "../../components/_coreComponent/card";
 import AosDiv from "../../components/_coreComponent/aosEffect";
-import { ArtistService } from "../../services/ArtistService";
-import useSWR from "swr";
 import { event } from "../../types";
 import SEO from "../../components/_coreComponent/seo";
+import { useSelector } from "react-redux";
 
-const fetcher = () => ArtistService.getAll();
 const Artist = () => {
   const [sortType, setSortType] = useState("a-z");
-  const { data, isLoading, error } = useSWR("artist", fetcher);
-  if (isLoading) {
+  const { data, error } = useSelector((state: any) => state.artists);
+  console.log(data);
+
+  if (!data) {
     return <div>Loading...</div>;
   }
   if (error) {

@@ -1,15 +1,14 @@
 import CustomSlider from "./../_coreComponent/customSlider";
 import BigCarousel from "../_coreComponent/bigCarousel";
-import useSWR from "swr";
-import { EventService } from "../../services/EventService";
 import { event } from "../../types";
 
-const fetcher = () => EventService.getAll();
+import { useSelector } from "react-redux";
 
 const Carousel = () => {
-  const { data: events, error, isLoading } = useSWR("carousel", fetcher);
-  if (isLoading) {
-    return <div>Loading</div>;
+  const { events, error } = useSelector((state: any) => state.events);
+
+  if (!events) {
+    return <div>Loadings</div>;
   }
   if (error) {
     return <div>Error </div>;
@@ -38,7 +37,9 @@ const Carousel = () => {
       />
       <div className="w-full border-t-4 border-b-4 border-yellow-500 ">
         <CustomSlider
-          events={events.filter((event: event) => event.category === "Festival")}
+          events={events.filter(
+            (event: event) => event.category === "Festival"
+          )}
           title="Festival"
         />
         <BigCarousel

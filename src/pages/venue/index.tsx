@@ -1,17 +1,15 @@
 import { useState } from "react";
 import Card from "../../components/_coreComponent/card";
 import AosDiv from "../../components/_coreComponent/aosEffect";
-import { VenueService } from "../../services/VenueService";
 import { event } from "../../types";
-import useSWR from "swr";
 import SEO from "../../components/_coreComponent/seo";
+import { useSelector } from "react-redux";
 
-const fetcher = () => VenueService.getAll();
 const Venue = () => {
   const [sortType, setSortType] = useState("a-z");
-  const { data, isLoading, error } = useSWR("venues1", fetcher);
+  const { data, error } = useSelector((state: any) => state.venues);
 
-  if (isLoading) {
+  if (!data) {
     return <div>Loading...</div>;
   }
   if (error) {

@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply box-border p-0 m-0 overflow-x-hidden antialiased text-white bg-black font-raleway;
+}
+
+.populer-carousel .swiper-pagination-bullet {
+  @apply w-6 h-2 bg-yellow-500 rounded-none ;
+}
+.populer-carousel .swiper-button-next,
+.populer-carousel .swiper-button-prev {
+  @apply text-white;
+}
+
+
+@layer components {
+  .swiper-slide {
+    @apply shadow-dark;
+  }
+}
+.lightText {
+  @apply text-gray-500;
+}
+
+.darkText {
+  @apply font-bold;
+}
+.swiper {
+  @apply z-auto;
+}
+.allAbove {
+  color: white !important;
+}
+.z1 {
+  position: absolute;
+  z-index: 3 !important;
+}
+
+.card {
+  @apply overflow-hidden bg-white rounded-lg shadow-lg;
+}
+
+::-webkit-scrollbar {
+  width: 0.8rem;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #f3cb06;
+  border: 2px solid rgb(255, 255, 255);
+}

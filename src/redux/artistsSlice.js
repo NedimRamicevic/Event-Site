@@ -26,7 +26,7 @@ const artistsSlice = createSlice({
     },
     [fetchArtists.fulfilled]: (state, action) => {
       state.loading = "succeeded";
-      state.artists = action.payload;
+      state.data = action.payload;
     },
     [fetchArtists.rejected]: (state, action) => {
       state.loading = "failed";

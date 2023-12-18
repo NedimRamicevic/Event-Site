@@ -9,10 +9,9 @@ import AosDiv from "../../components/_coreComponent/aosEffect";
 import { EventService } from "../../services/EventService";
 import useSWR from "swr";
 import { event } from "../../types";
-import SEO from "../../components/_coreComponent/seo";
 import { slugify } from "../../components/_coreComponent/slug";
 
-const fetcher = () => EventService.getAll()
+const fetcher = () => EventService.getAll();
 const Calendar = () => {
   const matchEvents = useMatch("/events");
   const matchCategory = useMatch("/category");
@@ -20,34 +19,31 @@ const Calendar = () => {
   const activeClassEvents = matchEvents ? "text-yellow-500" : "";
   const activeClassCategory = matchCategory ? "text-yellow-500" : "";
   const activeClassCalendar = matchCalendar ? "text-yellow-500" : "";
- 
-   const {data,isLoading,error} = useSWR("calendar",fetcher)
-   
-    if(isLoading){
-      <div>Loading..</div>
-    }
 
-    if(error){
-      <div>error..</div>
-    }
+  const { data, isLoading, error } = useSWR("calendar", fetcher);
+
+  if (isLoading) {
+    <div>Loading..</div>;
+  }
+
+  if (error) {
+    <div>error..</div>;
+  }
   const [selectedDate, setSelectedDate] = useState(new Date());
   const onChange = (date: Date) => {
     setSelectedDate(date);
   };
 
-  const isSameDate = (date1: Date, date2:Date) =>{
-     return   date1.getFullYear() === date2.getFullYear() &&
-              date1.getMonth() === date2.getMonth() && 
-              date1.getDate() === date2.getDate(); 
-  }
-             
+  const isSameDate = (date1: Date, date2: Date) => {
+    return (
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()
+    );
+  };
+
   return (
     <div className="bg-no-repeat bg-contain bg-background-image-4">
-       <SEO
-        title="Takvim"
-        description="En son etkinliklerimizi keşfedin."
-        url="http://localhost:5173/calendar"
-      />
       <div className="px-0 sm:px-20 pt-28 ">
         <h1 className="mb-4 text-2xl font-extrabold text-white font-raleway">
           Takvim
@@ -72,7 +68,6 @@ const Calendar = () => {
             className={`text-white flex items-center text-lg ${activeClassCalendar}`}
           >
             <BiCalendar className={`w-4 h-3 ${activeClassCalendar}`} />
-
             Takvim
           </NavLink>
         </div>
@@ -80,30 +75,35 @@ const Calendar = () => {
         <div className="flex flex-col-reverse flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-2/3">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3 gap-x-10">
-            {data && data.filter((card:event) => isSameDate(new Date(card.eventDate), selectedDate)).map((card:event, index: number) => (
-                <AosDiv aosType="zoom-in" aosDuration={500}   key={index} >
-                  <Card
-                    image={card.image}
-                    title={card.name}
-                    date={card.eventDate}
-                    time={`${card.startTime}-${card.endTime}`}
-                    venue={card.venue}
-                    size="medium"
-                    route={`../event/${slugify(`${card.name} ${card._id}`)}`}
-
-                  />
-              </AosDiv> 
-              ))}
+              {data &&
+                data
+                  .filter((card: event) =>
+                    isSameDate(new Date(card.eventDate), selectedDate)
+                  )
+                  .map((card: event, index: number) => (
+                    <AosDiv aosType="zoom-in" aosDuration={500} key={index}>
+                      <Card
+                        image={card.image}
+                        title={card.name}
+                        date={card.eventDate}
+                        time={`${card.startTime}-${card.endTime}`}
+                        venue={card.venue}
+                        size="medium"
+                        route={`../event/${slugify(
+                          `${card.name} ${card._id}`
+                        )}`}
+                      />
+                    </AosDiv>
+                  ))}
             </div>
           </div>
           <div className="relative w-1/5 p-4 text-right">
-
             <DatePicker
-               selected={selectedDate}
-               onChange={onChange}
-               minDate={new Date()}
-               inline
-               showDisabledMonthNavigation
+              selected={selectedDate}
+              onChange={onChange}
+              minDate={new Date()}
+              inline
+              showDisabledMonthNavigation
             />
           </div>
         </div>
@@ -113,4 +113,3 @@ const Calendar = () => {
 };
 
 export default Calendar;
-

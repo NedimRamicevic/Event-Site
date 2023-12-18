@@ -3,9 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { NavLink, useMatch } from "react-router-dom";
 import { CiCircleList } from "react-icons/ci";
 import Card from "../../components/_coreComponent/card";
-import AosDiv from "../../components/_coreComponent/aosEffect";
 import { event } from "../../types";
-import SEO from "../../components/_coreComponent/seo";
 import { slugify } from "../../components/_coreComponent/slug";
 import { useSelector } from "react-redux";
 
@@ -28,11 +26,6 @@ const Events = () => {
 
   return (
     <div className="mb-10 bg-no-repeat bg-contain bg-background-image-4">
-      <SEO
-        title="Etkinlikler"
-        description="En son etkinliklerimizi keşfedin."
-        url="http://localhost:5173/events"
-      />
       <div className="px-0 sm:px-20 pt-28">
         <h1 className="items-center mb-4 text-2xl font-extrabold text-white font-raleway">
           Etkinlikler ({events.length})
@@ -64,18 +57,17 @@ const Events = () => {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10">
           {events?.map((card: event, index: number) => (
-            <AosDiv aosType="zoom-in" aosDuration={500} key={index}>
-              <Card
-                title={card.name}
-                image={card.image}
-                date={card.eventDate}
-                time={`${card.startTime}-${card.endTime}`}
-                venue={card.venue}
-                size="medium"
-                className="text-left"
-                route={`../event/${slugify(`${card.name} ${card._id}`)}`}
-              />
-            </AosDiv>
+            <Card
+              key={index}
+              title={card.name}
+              image={card.image}
+              date={card.eventDate}
+              time={`${card.startTime}-${card.endTime}`}
+              venue={card.venue}
+              size="medium"
+              className="text-left"
+              route={`../event/${slugify(`${card.name} ${card._id}`)}`}
+            />
           ))}
         </div>
       </div>

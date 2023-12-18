@@ -5,7 +5,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { event } from "../../../types";
 import Card from "../card";
-import AosDiv from "../aosEffect";
 import SliderButtons from "./sliderNavButtons";
 import { Link } from "react-router-dom";
 import { slugify } from "../slug";
@@ -29,31 +28,30 @@ const CustomSlider = (props: { events: event[]; title: string }) => {
         </div>
       </div>
       <div className="pl-16">
-      <CustomCarousel
-        spaceBetween={20}
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          480: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          640: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-          1024: {
-            slidesPerView: 5,
-            spaceBetween: 5,
-          },
-        }}
-        className="relative"
-      >
-        {props.events.map((card: event, index: number) => (
-          <SwiperSlide key={index}>
-            <AosDiv aosType="fade-left" aosDuration={900}>
+        <CustomCarousel
+          spaceBetween={20}
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            480: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            640: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 5,
+            },
+          }}
+          className="relative"
+        >
+          {props.events.map((card: event, index: number) => (
+            <SwiperSlide key={index}>
               <Card
                 title={card.name}
                 size="medium"
@@ -62,11 +60,10 @@ const CustomSlider = (props: { events: event[]; title: string }) => {
                 venue={card.venue}
                 route={`event/${slugify(`${card.name} ${card._id}`)}`}
               />
-            </AosDiv>
-          </SwiperSlide>
-        ))}
-        <SliderButtons />
-      </CustomCarousel>
+            </SwiperSlide>
+          ))}
+          <SliderButtons />
+        </CustomCarousel>
       </div>
     </div>
   );

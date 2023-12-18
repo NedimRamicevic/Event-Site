@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Card from "../../components/_coreComponent/card";
-import AosDiv from "../../components/_coreComponent/aosEffect";
 import { event } from "../../types";
-import SEO from "../../components/_coreComponent/seo";
 import { useSelector } from "react-redux";
 
 const Venue = () => {
@@ -18,11 +16,6 @@ const Venue = () => {
 
   return (
     <div className="mb-12 bg-no-repeat bg-contain bg-background-image-4">
-      <SEO
-        title="Mekanlar"
-        description="En son mekanlarımızı keşfedin."
-        url="http://localhost:5173/venue"
-      />
       <div className="px-0 sm:px-20 pt-28">
         <h1 className="mb-4 text-2xl font-extrabold text-white font-raleway">
           Mekanlar ({data.length})
@@ -38,16 +31,15 @@ const Venue = () => {
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-10">
           {data.map((card: event, index: number) => (
-            <AosDiv aosType="zoom-in" aosDuration={500} key={index}>
-              <Card
-                route={`../venue/${card.name}`}
-                title={card.name}
-                city={card.city}
-                image="https://1.bp.blogspot.com/-7eKF5gdF-z8/VeL9dvwqeuI/AAAAAAAAHeU/fbxFHjwTyiM/s1600/ziggodome_header.jpg"
-                size="small"
-                className="flex flex-col justify-center text-left cursor-pointer"
-              />
-            </AosDiv>
+            <Card
+              key={index}
+              route={`../venue/${card.name}`}
+              title={card.name}
+              city={card.city}
+              image="https://1.bp.blogspot.com/-7eKF5gdF-z8/VeL9dvwqeuI/AAAAAAAAHeU/fbxFHjwTyiM/s1600/ziggodome_header.jpg"
+              size="small"
+              className="flex flex-col justify-center text-left cursor-pointer"
+            />
           ))}
         </div>
       </div>

@@ -22,14 +22,14 @@ const categoriesSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchCategories.pending]: (state) => {
-      state.status = "loading";
+      state.loading = "loading";
     },
     [fetchCategories.fulfilled]: (state, action) => {
-      state.status = "succeeded";
-      state.categories = action.payload;
+      state.loading = "succeeded";
+      state.data = action.payload;
     },
     [fetchCategories.rejected]: (state, action) => {
-      state.status = "failed";
+      state.loading = "failed";
       state.error = action.error.message;
     },
   },

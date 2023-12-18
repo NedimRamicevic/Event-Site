@@ -1,21 +1,19 @@
 import { useParams } from "react-router-dom";
-import useSWR from "swr";
 import { event } from "../../types";
-import { EventService } from "../../services/EventService";
 import Card from "../_coreComponent/card";
 import { slugify } from "../_coreComponent/slug";
-
-const fetcher = () => EventService.getAll();
+import { useSelector } from "react-redux";
 
 const EventsBycategory = () => {
-  const { data, isLoading, error } = useSWR("eventsbycategory", fetcher);
+  const { events, error } = useSelector((state: any) => state.events);
+
   const { name = "" } = useParams();
   const lowerCaseName = name.toLowerCase();
 
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>Loading...</div>;
-  const cards = data.filter(
-    (event: event) => event.category.toLowerCase() === lowerCaseName
+  if (!events) return <div>Loading...</div>;
+  const cards = events.filter(
+    (events: event) => events.category.toLowerCase() === lowerCaseName
   );
 
   return (

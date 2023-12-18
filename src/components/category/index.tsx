@@ -6,7 +6,7 @@ const Categories = () => {
   const { data, error } = useSelector((state: any) => state.categories);
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <div>Loading..</div>;
   }
   if (error) {
     return <div>Error</div>;

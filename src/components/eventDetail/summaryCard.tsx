@@ -23,7 +23,7 @@ const SummaryCard = (props: {
           className="absolute flex items-center gap-2 text-white text-subtitle left-4 md:left-16 top-10"
           to={"/"}
         >
-          <BsArrowLeft className="w-6 h-6" /> Geri
+          <BsArrowLeft className="w-6 h-6" /> Back
         </Link>
       </div>
       <div className="flex flex-col items-center justify-around mt-20 md:flex-row sm:mt-0 md:mt-16">
@@ -51,18 +51,17 @@ const SummaryCard = (props: {
           <div className="flex flex-col h-full gap-4 p-8 mx-4 bg-fourth shadow-dark md:mx-28 rounded-xl">
             <div className="flex  justify-around ">
               <div className="flex flex-col">
-                <h2 className="text-primary text-subtitle">Tarih & Zaman</h2>
+                <h2 className="text-primary text-subtitle">Date </h2>
                 <p className=" text-text text-fifth">{formattedDate}</p>
               </div>
               <div className="flex flex-col  ">
-                <h2 className="text-subtitle text-primary">Saat</h2>
+                <h2 className="text-subtitle text-primary">Hour</h2>
                 <p>
-                  Başlangıç:{" "}
+                  Start:{" "}
                   <span className="font-bold ">{props.event.startTime} </span>
                 </p>
                 <p>
-                  Bitiş:{" "}
-                  <span className="font-bold ">{props.event.endTime}</span>
+                  End: <span className="font-bold ">{props.event.endTime}</span>
                 </p>
               </div>
             </div>
@@ -74,7 +73,7 @@ const SummaryCard = (props: {
                 size="large"
                 fullWidth
               >
-                Satın Al
+                Buy Ticket
               </MuiButton>
             </div>
           </div>

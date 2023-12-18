@@ -15,7 +15,7 @@ const OtherEvents = () => {
   return (
     <div className="flex flex-col gap-6 px-24 bg-gray-800 lg:p-24 font-raleway">
       <h1 className="mt-10 font-bold text-yellow-500 text-title">
-        Diğer Etkinlikler
+        Other Events
       </h1>
       <div className="grid grid-cols-1 gap-4 text-black sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 ">
         {cards.map((card: event, i: number) => (

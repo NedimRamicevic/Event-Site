@@ -14,7 +14,7 @@ const Category = () => {
     <div className="bg-no-repeat bg-contain bg-background-image-4">
       <div className="px-0 sm:px-20 pt-28">
         <h1 className="mb-4 text-2xl font-extrabold text-white font-raleway">
-          Kategori
+          Category
         </h1>
         <div className="flex items-center justify-end gap-4 px-10 mb-6 border-b border-white sm:py-2">
           <NavLink
@@ -22,21 +22,21 @@ const Category = () => {
             className={`text-white flex items-center text-lg ${activeClassEvents}`}
           >
             <CiCircleList className={`w-4 h-4 ${activeClassEvents}`} />
-            Liste
+            List
           </NavLink>
           <NavLink
             to={"/categories"}
             className={`text-white flex items-center text-lg ${activeClassCategory}`}
           >
             <BiCategoryAlt className={`w-4 h-3 ${activeClassCategory}`} />
-            Kategori
+            Category
           </NavLink>
           <NavLink
             to={"/calendar"}
             className={`text-white flex items-center text-lg ${activeClassCalendar}`}
           >
             <BiCalendar className={`w-4 h-4 ${activeClassCalendar}`} />
-            Takvim
+            Calendar
           </NavLink>
         </div>
 

@@ -16,9 +16,9 @@ const Carousel = () => {
 
   return (
     <div className="w-screen ">
-      <BigCarousel events={events.slice(12, 20)} title="Populer Etkinlikler" />
+      <BigCarousel events={events.slice(12, 20)} title="Popular Events" />
       <CustomSlider
-        events={events.filter((event: event) => event.category === "Tiyatro")}
+        events={events.filter((event: event) => event.category === "Theatre")}
         title="Tiyatro"
       />
       <CustomSlider
@@ -32,7 +32,7 @@ const Carousel = () => {
         />
       </div>
       <CustomSlider
-        events={events.filter((event: event) => event.category === "Müzik")}
+        events={events.filter((event: event) => event.category === "Music")}
         title="Müzik"
       />
       <div className="w-full border-t-4 border-b-4 border-yellow-500 ">
@@ -50,7 +50,7 @@ const Carousel = () => {
         />
       </div>
       <CustomSlider
-        events={events.filter((event: event) => event.category === "Sinema")}
+        events={events.filter((event: event) => event.category === "Cinema")}
         title="Sinema"
       />
     </div>

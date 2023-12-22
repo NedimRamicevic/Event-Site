@@ -3,10 +3,10 @@ import Header from "../../components/navigation";
 import Footer from "../../components/navigation/footer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchCategories } from "../../redux/categorySlice.js";
-import { fetchEvents } from "../../redux/eventsSlice.js";
-import { fetchVenues } from "../../redux/venuesSlice.js";
-import { fetchArtists } from "../../redux/artistsSlice.js";
+import { fetchCategories } from "../../redux/categorySlice";
+import { fetchEvents } from "../../redux/eventsSlice";
+import { fetchVenues } from "../../redux/venuesSlice";
+import { fetchArtists } from "../../redux/artistsSlice";
 
 const MainLayout = () => {
   const dispatch = useDispatch();

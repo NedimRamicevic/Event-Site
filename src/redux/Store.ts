@@ -4,7 +4,7 @@ import artistsReducer from "./artistsSlice";
 import venuesReducer from "./venuesSlice";
 import categoriesReducer from "./categorySlice";
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     events: eventsReducer,
     artists: artistsReducer,
@@ -12,5 +12,3 @@ const store = configureStore({
     categories: categoriesReducer,
   },
 });
-
-export default store;

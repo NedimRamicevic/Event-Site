@@ -15,4 +15,6 @@ const store = configureStore({
     categories: categoriesReducer,
   },
 });
+
+export type AppDispatch = typeof store.dispatch;
 export default store;

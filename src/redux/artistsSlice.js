@@ -21,20 +21,21 @@ const artistsSlice = createSlice({
   initialState,
   reducers: {},
 
-  extraReducers: {
-    [fetchArtists.pending]: (state, action) => {
-      state.loading = true;
-      state.error = false;
-    },
-    [fetchArtists.fulfilled]: (state, action) => {
-      state.data = action.payload;
-      state.loading = false;
-      state.error = false;
-    },
-    [fetchArtists.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = true;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchArtists.pending, (state) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(fetchArtists.fulfilled, (state, action) => {
+        state.data = action.payload;
+        state.loading = false;
+        state.error = false;
+      })
+      .addCase(fetchArtists.rejected, (state) => {
+        state.loading = false;
+        state.error = true;
+      });
   },
 });
 

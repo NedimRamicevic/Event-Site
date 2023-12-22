@@ -10,25 +10,26 @@ export const fetchVenues = createAsyncThunk("venues/fetchVenues", async () => {
 const initialState = {
   data: null,
   loading: false,
-  error: null,
+  error: false,
 };
 
 const venuesSlice = createSlice({
   name: "venues",
   initialState,
   reducers: {},
-  extraReducers: {
-    [fetchVenues.pending]: (state) => {
-      state.loading = "loading";
-    },
-    [fetchVenues.fulfilled]: (state, action) => {
-      state.loading = "succeeded";
-      state.data = action.payload;
-    },
-    [fetchVenues.rejected]: (state, action) => {
-      state.loading = "failed";
-      state.error = action.error.message;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchVenues.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchVenues.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      })
+      .addCase(fetchVenues.rejected, (state) => {
+        state.loading = false;
+        state.error = true;
+      });
   },
 });
 

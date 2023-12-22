@@ -8,8 +8,9 @@ import { fetchEvents } from "../../redux/eventsSlice";
 import { fetchVenues } from "../../redux/venuesSlice";
 import { fetchArtists } from "../../redux/artistsSlice";
 
+import { AppDispatch } from "../../redux/Store";
 const MainLayout = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     console.log("MainLayout");

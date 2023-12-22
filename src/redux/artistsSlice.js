@@ -20,17 +20,20 @@ const artistsSlice = createSlice({
   name: "artists",
   initialState,
   reducers: {},
+
   extraReducers: {
-    [fetchArtists.pending]: (state) => {
-      state.loading = "loading";
+    [fetchArtists.pending]: (state, action) => {
+      state.loading = true;
+      state.error = false;
     },
     [fetchArtists.fulfilled]: (state, action) => {
-      state.loading = "succeeded";
       state.data = action.payload;
+      state.loading = false;
+      state.error = false;
     },
     [fetchArtists.rejected]: (state, action) => {
-      state.loading = "failed";
-      state.error = action.error.message;
+      state.loading = false;
+      state.error = true;
     },
   },
 });

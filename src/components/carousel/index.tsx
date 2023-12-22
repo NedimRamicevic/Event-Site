@@ -19,7 +19,7 @@ const Carousel = () => {
       <BigCarousel events={events.slice(12, 20)} title="Popular Events" />
       <CustomSlider
         events={events.filter((event: event) => event.category === "Theatre")}
-        title="Tiyatro"
+        title="Theatre"
       />
       <CustomSlider
         events={events.filter((event: event) => event.category === "Stand-Up")}
@@ -33,7 +33,7 @@ const Carousel = () => {
       </div>
       <CustomSlider
         events={events.filter((event: event) => event.category === "Music")}
-        title="Müzik"
+        title="Music"
       />
       <div className="w-full border-t-4 border-b-4 border-yellow-500 ">
         <CustomSlider
@@ -51,7 +51,7 @@ const Carousel = () => {
       </div>
       <CustomSlider
         events={events.filter((event: event) => event.category === "Cinema")}
-        title="Sinema"
+        title="Cinema"
       />
     </div>
   );
